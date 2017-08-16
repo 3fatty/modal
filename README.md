@@ -22,6 +22,11 @@ $ npm run generate
 For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
 
 
+<br>
+---
+<br>
+
+
 ## 全局的 dialog/modal 模块, 可在任意地方调用( 默认 context 为 window )
 ### 主要优点:
 1. 没有依赖, 静默初始化, 无需引用, 随处调用
