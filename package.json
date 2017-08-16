@@ -1,0 +1,22 @@
+{
+  "name": "modal",
+  "version": "1.0.0",
+  "description": "a global modal module for vue",
+  "author": "hs",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "nuxt": "0.10.6"
+  },
+  "devDependencies": {
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5"
+  }
+}

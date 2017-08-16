@@ -1,0 +1,83 @@
+@import './variables.less';
+@import './flex.less';
+@import './common.less';
+
+// 浮动
+.left()        { float:left; }
+.right()       { float:right; }
+.clear()       { clear:both; }
+
+// 常用 display
+.none()        { display:none; }
+.block()       { display:block; }
+.inline-block(){ display:inline-block; }
+.table()       { display:table; width:100%; }
+.table-row()   { display:table-row; }
+.table-cell(@w:auto,@h:auto)  {
+  display:table-cell; width:@w; height:@h; vertical-align:middle;
+  &>* { vertical-align:top; }
+}
+// 用于chrome显示小字体 ( < 12px )
+.px(@n) { font-size:12px; transform:scale(@n / 12); letter-spacing:1px; }
+// 文字 垂直居中
+.verticalHeight     (@h) { height:@h; line-height:@h; }
+// 文字 水平+垂直 居中
+.inlineCenter(@w, @h:@w) { .inline-block; width:@w; height:@h; line-height:@h; text-align:center; }
+// 设置正方形
+.square(@w,@h:@w) { width :@w; height:@h; }
+// 设置圆形
+.circle(@w,@h:@w) { .square(@w, @h); border-radius:50%; }
+// 居中的背景图片设置
+.bgCenter(@c:transparent) { background:@c no-repeat center / cover; }
+// 浮动
+.clearfix() { &:after { content:"\200B"; display:block; height:0; clear:both; } }
+
+.justify {
+  color:blue; outline:1px solid red;
+
+
+  overflow:hidden;
+	height:auto;
+	text-align:justify;
+  letter-spacing:normal;
+}
+
+.justify:after{
+	display:inline-block;
+	content:'';
+	overflow:hidden;
+	width:100%;
+	height:0;
+}
+
+// 定位
+.relative            ()                              { position:relative; }
+.resetBox            ()                              { margin:0; padding:0; border:0 none; }
+.absoluteLeftTop     (@l:0, @t:@l, @z:1)             { position:absolute; left:@l;  top:@t;    z-index:@z; .resetBox; }
+.absoluteLeftBottom  (@l:0, @b:@l, @z:1)             { position:absolute; left:@l;  bottom:@b; z-index:@z; .resetBox; }
+.absoluteRightTop    (@r:0, @t:@r, @z:1)             { position:absolute; right:@r; top:@t;    z-index:@z; .resetBox; }
+.absoluteRightBottom (@r:0, @b:@r, @z:1)             { position:absolute; right:@r; bottom:@b; z-index:@z; .resetBox; }
+.absoluteCenter      (@w, @h:@w,@mt:-@h/2,@ml:-@w/2) { position:absolute; left:50%; top:50%; margin:@mt 0 0 @ml; width:@w; height:@h; line-height:@h; text-align:center; }
+.absoluteFull        (@z:100)                        { position:absolute; top:0; left:0; z-index:@z; .resetBox; width:100%; height:100%; }
+.fixedCenter         (@z:1000)                       { position:fixed; left:50%; top:50%; z-index:@z; .resetBox; transform:translate3d(-50%,-50%,0); }
+.fixedFull(@z:1000, @bg:@maskBgColor)           { position:fixed; top:0; left:0; z-index:@z; width:100%; height:100%; background-color:@bg; }
+
+// 通用的容器
+.commonRadius   () { border-radius:4px; }
+.commonContainer() { border:1px solid @colorBorder; .commonRadius; }
+.disc           () { border-radius:50%; }
+
+
+.bubble-box() {
+  .shadow() { box-shadow: 0 0 7px #ccc; }
+  position:relative; padding:16px; background:#fff; border-radius:2px; .shadow;
+  &::before {  position:absolute; top:-5px; left:50%; margin-left:-5px; width:10px; height:10px; background:#fff; -ms-transform:rotate(-45deg); transform:rotate(-45deg); box-shadow:2px -2px 2px #ececec; content:'\200B'; }
+  &.left::before { left:-5px; top:50%; margin:-5px 0 0 0; box-shadow:2px -2px 2px #ececec; }
+  &.right::before { left:auto; right:-5px; top:50%; margin:-5px 0 0 0; box-shadow:2px 2px 2px #ececec; }
+  &.bottom::before { left:50%; top:auto; bottom:-5px; margin:-5px 0 0 0; box-shadow:-2px 2px 2px #ececec; }
+}
+
+  // read-only; read-write; read-write-plaintext-only;
+.userModify(@value) {
+  -webkit-user-modify:@value;
+}
